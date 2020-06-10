@@ -147,6 +147,11 @@ p{
 .graph_background{
     height: 90%;
     width: 70%;
+    display: inline-block;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    right: 15%;
+    overflow:hidden;
     background-color: #FFFFFF;
 }
-
