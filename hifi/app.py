@@ -57,6 +57,15 @@ def recommendation(uid):
                                    apptime=0, activitytime=0, app_mean=0, sleep_mean=0, activity_mean=0,
                                    dstatetext='', sleeptext='', activitytext='', apptext='')
         score = float(score)
+        if len(df.groupby(['ESM']).filter(lambda group: group.ESM > score)) == 0:
+            dstatetext = 'Now you are good more than ever!'
+            sleeptext = 'You need no recommendation for now.'
+            activitytext = 'Just do as you are doing now!'
+            apptext = '^____________________________^'
+            return render_template('depression_state.html', flag='recommendation', uid=uid, score=0, sleeptime=0,
+                                   apptime=0, activitytime=0, app_mean=0, sleep_mean=0, activity_mean=0,
+                                   dstatetext=dstatetext, sleeptext=sleeptext, activitytext=activitytext, apptext=apptext)
+        
         sleeptime = float(sleeptime)
         apptime = float(apptime)
         activitytime = float(activitytime)
